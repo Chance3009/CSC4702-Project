@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Gallery | Robotics Education</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <h1>🎬 Educational Video Series</h1>
+        <p>Progressive Learning Across Three Educational Levels</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="videos.html" class="active">Video Gallery</a>
+        <a href="interactive.html">Interactive Learning</a>
+        <a href="reflection.html">Reflection</a>
+    </nav>
+
+    <section>
+        <p style="font-size: 1.2em; text-align: center; color: #475569; max-width: 800px; margin: 0 auto 50px;">
+            Watch <strong>Robo's journey</strong> unfold across three carefully crafted videos,
+            each designed for different educational levels while maintaining narrative continuity.
+        </p>
+    </section>
+
+    <section class="video-card">
+        <h2>🎯 Video 1: Junior School (Ages 13–15)</h2>
+        <div
+            style="background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+            <p style="color: #1e293b; font-weight: 600; margin: 0;">
+                <strong>Level:</strong> Beginner | <strong>Duration:</strong> ~3-4 minutes | <strong>Math
+                    Level:</strong> Intuitive
+            </p>
+        </div>
+        <video controls src="assets/video1.mp4" poster="assets/images/thumbnail1.jpg">
+            Your browser does not support the video tag.
+        </video>
+        <p>
+            <strong>🎓 Learning Focus:</strong> This video introduces orientation using a <em>compass analogy</em>.
+            Mathematical symbols are intentionally avoided to focus on intuitive understanding.
+        </p>
+        <p>
+            <strong>Key Concepts:</strong>
+            <br>• Understanding directions (North, South, East, West)
+            <br>• How robots "know" which way they're facing
+            <br>• Real-world navigation without complex terminology
+        </p>
+    </section>
+
+    <section class="video-card">
+        <h2>📐 Video 2: High School / Pre-University</h2>
+        <div
+            style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+            <p style="color: #1e293b; font-weight: 600; margin: 0;">
+                <strong>Level:</strong> Intermediate | <strong>Duration:</strong> ~4-5 minutes | <strong>Math
+                    Level:</strong> Trigonometry
+            </p>
+        </div>
+        <video controls src="assets/video2.mp4" poster="assets/images/thumbnail2.jpg">
+            Your browser does not support the video tag.
+        </video>
+        <p>
+            <strong>🎓 Learning Focus:</strong> Orientation is expressed using <em>angles, trigonometry,
+                and the 2×2 rotation matrix</em>. Builds upon the intuition from Video 1.
+        </p>
+        <p>
+            <strong>Key Concepts:</strong>
+            <br>• Angles and degrees of rotation
+            <br>• Sine and cosine in rotational motion
+            <br>• Introduction to rotation matrices
+            <br>• Converting directions into mathematical formulas
+        </p>
+    </section>
+
+    <section class="video-card">
+        <h2>🎓 Video 3: Undergraduate / Professional</h2>
+        <div
+            style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+            <p style="color: #1e293b; font-weight: 600; margin: 0;">
+                <strong>Level:</strong> Advanced | <strong>Duration:</strong> ~5-6 minutes | <strong>Math
+                    Level:</strong> Linear Algebra
+            </p>
+        </div>
+        <video controls src="assets/video3.mp4" poster="assets/images/thumbnail3.jpg">
+            Your browser does not support the video tag.
+        </video>
+        <p>
+            <strong>🎓 Learning Focus:</strong> The concept is formalized using <em>4×4 homogeneous transformation
+                matrices
+                and coordinate frame composition</em>. Professional-level robotics mathematics.
+        </p>
+        <p>
+            <strong>Key Concepts:</strong>
+            <br>• Homogeneous coordinates and transformation matrices
+            <br>• 3D rotation and translation in a unified framework
+            <br>• Frame-to-frame transformations
+            <br>• Composition of multiple transformations
+            <br>• Real-world applications in robotic manipulation
+        </p>
+    </section>
+
+    <section
+        style="background: white; border-radius: 12px; padding: 40px; margin-top: 50px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center;">
+        <h2 style="margin-bottom: 25px;">🚀 Ready for Hands-On Learning?</h2>
+        <p style="margin-bottom: 30px; font-size: 1.1em;">
+            Try our interactive 3D visualizer to manipulate transformations in real-time!
+        </p>
+        <a href="interactive.html" class="button">Launch Interactive Demo →</a>
+    </section>
+
+    <footer>
+        <p>🎓 CSC4702 Group Project – 2025/2026 | Advancing Robotics Education</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

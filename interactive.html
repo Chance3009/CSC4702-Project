@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Learning | Robotics Theory & Practice</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .theory-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 40px;
+            border-radius: 12px;
+            margin: 30px auto;
+            max-width: 1200px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .theory-section h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+
+        .formula {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .explanation-box {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 1200px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .explanation-box h4 {
+            color: var(--secondary);
+            margin-top: 0;
+        }
+
+        .example {
+            background: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+            border-radius: 8px;
+        }
+
+        .step-by-step {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+        }
+
+        .step-by-step li {
+            counter-increment: step-counter;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .step-by-step li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--gradient-tech);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .quiz-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 30px auto;
+            max-width: 1200px;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .quiz-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.4);
+        }
+
+        .quiz-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .concept-highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        /* Fix matrix distortion - force monospace and preserve whitespace */
+        #matrixOutput {
+            font-family: 'Courier New', 'Consolas', monospace;
+            white-space: pre;
+            line-height: 1.5;
+            
+            /* Center the matrix block */
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+            text-align: left;
+            padding: 10px 0;
+        }
+
+        /* Beautiful styling for title and legend */
+        .viz-matrix > div {
+            text-align: center;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .viz-matrix > div:first-child {
+            font-size: 1em !important;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .viz-matrix > div:last-child {
+            font-size: 0.85em !important;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        #matrixOutput {
+            text-align: left !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🎓 Interactive Robotics Learning</h1>
+        <p>Understanding Position & Orientation Through Theory and Practice</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="videos.html">Video Gallery</a>
+        <a href="interactive.html" class="active">Interactive Learning</a>
+        <a href="reflection.html">Reflection</a>
+    </nav>
+
+    <!-- THEORETICAL FOUNDATION -->
+    <section>
+        <h2>📚 Theoretical Foundation</h2>
+        <p>
+            Before diving into the interactive visualizer, let's understand the <strong>mathematical theory</strong> 
+            behind robot transformations. This knowledge is fundamental to robotics, computer graphics, and spatial reasoning.
+        </p>
+
+        <div class="theory-section">
+            <h3>🎯 What is a Transformation Matrix?</h3>
+            <p>
+                A <span class="concept-highlight">transformation matrix</span> is a mathematical tool that describes 
+                how to move an object from one location and orientation to another in 3D space. Think of it as a 
+                complete "recipe" that tells a robot:
+            </p>
+            <ul>
+                <li><strong>Where to be</strong> (position/translation)</li>
+                <li><strong>How to face</strong> (orientation/rotation)</li>
+            </ul>
+
+            <div class="formula">
+                <strong>4×4 Homogeneous Transformation Matrix:</strong><br><br>
+                T = [ R | p ]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;[ 0 | 1 ]<br><br>
+                Where:<br>
+                • R = 3×3 rotation matrix (orientation)<br>
+                • p = 3×1 position vector (translation)<br>
+                • Bottom row = [0 0 0 1] (homogeneous coordinates)
+            </div>
+        </div>
+
+        <div class="theory-section">
+            <h3>🔄 Part 1: Rotation (Orientation)</h3>
+            <p>
+                <span class="concept-highlight">Rotation matrices</span> describe how an object is oriented in space. 
+                We use <strong>Euler angles</strong> (Roll, Pitch, Yaw) which are intuitive:
+            </p>
+
+            <div class="explanation-box">
+                <h4>Understanding Euler Angles:</h4>
+                <ul>
+                    <li><strong>Roll (X-axis):</strong> Tilting left/right (like an airplane rolling)</li>
+                    <li><strong>Pitch (Y-axis):</strong> Tilting up/down (like nodding your head)</li>
+                    <li><strong>Yaw (Z-axis):</strong> Turning left/right (like shaking your head "no")</li>
+                </ul>
+            </div>
+
+            <div class="formula">
+                <strong>Individual Rotation Matrices:</strong><br><br>
+                <strong>Roll (X-axis):</strong><br>
+                Rx(α) = [ 1    0       0    ]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ 0  cos(α) -sin(α) ]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ 0  sin(α)  cos(α) ]<br><br>
+
+                <strong>Pitch (Y-axis):</strong><br>
+                Ry(β) = [ cos(β)  0  sin(β) ]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[   0     1    0    ]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-sin(β)  0  cos(β) ]<br><br>
+
+                <strong>Yaw (Z-axis):</strong><br>
+                Rz(γ) = [ cos(γ) -sin(γ)  0 ]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ sin(γ)  cos(γ)  0 ]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[   0       0     1 ]<br><br>
+
+                <strong>Combined Rotation (ZYX convention):</strong><br>
+                R = Rz(γ) × Ry(β) × Rx(α)
+            </div>
+        </div>
+
+        <div class="theory-section">
+            <h3>📍 Part 2: Translation (Position)</h3>
+            <p>
+                <span class="concept-highlight">Translation</span> is simpler—it just moves the object by adding 
+                distances along the X, Y, and Z axes.
+            </p>
+
+            <div class="formula">
+                <strong>Translation Vector:</strong><br><br>
+                p = [ px ]  ← X-axis displacement (left/right)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;[ py ]  ← Y-axis displacement (forward/back)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;[ pz ]  ← Z-axis displacement (up/down)
+            </div>
+        </div>
+
+        <div class="theory-section">
+            <h3>🎓 Part 3: Complete 4×4 Transformation Matrix</h3>
+            <p>
+                By combining rotation and translation into a single <span class="concept-highlight">4×4 matrix</span>, 
+                we can represent any position and orientation in 3D space:
+            </p>
+
+            <div class="formula">
+                <strong>Complete Transformation Matrix:</strong><br><br>
+                T = [ r11  r12  r13  px ]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;[ r21  r22  r23  py ]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;[ r31  r32  r33  pz ]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;[  0    0    0    1 ]<br><br>
+                
+                Where:<br>
+                • Top-left 3×3 (r11...r33) = Rotation matrix<br>
+                • Right column (px, py, pz) = Translation vector<br>
+                • Bottom row [0 0 0 1] = Enables matrix multiplication
+            </div>
+
+            <div class="explanation-box">
+                <h4>💡 Why 4×4 instead of just 3×3?</h4>
+                <p>
+                    The 4×4 format uses <strong>homogeneous coordinates</strong>, which allows us to:
+                </p>
+                <ul>
+                    <li>Combine rotation AND translation in ONE matrix</li>
+                    <li>Chain multiple transformations by matrix multiplication</li>
+                    <li>Represent infinity points in perspective projections</li>
+                </ul>
+                <p>
+                    This is why robotics, computer graphics, and CAD software all use 4×4 matrices!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STEP-BY-STEP TUTORIAL -->
+    <section>
+        <h2>📖 Step-by-Step: How It Works</h2>
+        
+        <ol class="step-by-step">
+            <li>
+                <strong>Input Euler Angles:</strong> You specify Roll (α), Pitch (β), and Yaw (γ) in degrees.
+            </li>
+            <li>
+                <strong>Convert to Radians:</strong> Computers use radians, so we convert: radians = degrees × π/180
+            </li>
+            <li>
+                <strong>Calculate Individual Rotations:</strong> Compute Rx(α), Ry(β), and Rz(γ) using sine and cosine.
+            </li>
+            <li>
+                <strong>Multiply Matrices:</strong> Combine them: R = Rz(γ) × Ry(β) × Rx(α) (order matters!)
+            </li>
+            <li>
+                <strong>Add Translation:</strong> Place px, py, pz in the right column of the 4×4 matrix.
+            </li>
+            <li>
+                <strong>Apply to Object:</strong> The robot now knows exactly where to be and how to orient itself!
+            </li>
+        </ol>
+
+        <div class="example">
+            <h4>📝 Example Calculation:</h4>
+            <p><strong>Given:</strong> Roll=30°, Pitch=0°, Yaw=0°, X=100, Y=0, Z=0</p>
+            <p><strong>Step 1:</strong> Convert 30° to radians: 30 × π/180 = 0.524 rad</p>
+            <p><strong>Step 2:</strong> Calculate Rx(0.524):</p>
+            <div class="formula">
+                Rx(30°) = [ 1     0        0     ]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ 0   0.866  -0.500  ]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ 0   0.500   0.866  ]
+            </div>
+            <p><strong>Step 3:</strong> Build 4×4 matrix with translation (100, 0, 0):</p>
+            <div class="formula">
+                T = [ 1     0        0      100 ]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;[ 0   0.866  -0.500    0 ]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;[ 0   0.500   0.866    0 ]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;[ 0     0        0      1 ]
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE VISUALIZER -->
+    <section class="visualizer-embed">
+        <h2 style="text-align: center; color: var(--primary); margin-bottom: 20px;">
+            🎮 Interactive 3D Visualizer - Apply What You Learned!
+        </h2>
+        <p style="text-align: center; color: #64748b; max-width: 800px; margin: 0 auto 30px;">
+            Now that you understand the theory, <strong>experiment with the visualizer below</strong>. 
+            Watch how changing angles and positions affects the transformation matrix in real-time!
+        </p>
+
+        <div class="visualizer-container">
+            <!-- Control Panel -->
+            <div class="viz-controls">
+                <div class="viz-control-group">
+                    <h4>📍 Translation (Position)</h4>
+                    <div class="viz-slider-container">
+                        <div class="viz-label">
+                            <span>X-Axis (Red)</span>
+                            <span class="viz-value" id="valX">0</span>
+                        </div>
+                        <input type="range" class="viz-slider" id="posX" min="-200" max="200" value="0" step="1">
+                    </div>
+                    <div class="viz-slider-container">
+                        <div class="viz-label">
+                            <span>Y-Axis (Green)</span>
+                            <span class="viz-value" id="valY">0</span>
+                        </div>
+                        <input type="range" class="viz-slider" id="posY" min="-200" max="200" value="0" step="1">
+                    </div>
+                    <div class="viz-slider-container">
+                        <div class="viz-label">
+                            <span>Z-Axis (Blue)</span>
+                            <span class="viz-value" id="valZ">0</span>
+                        </div>
+                        <input type="range" class="viz-slider" id="posZ" min="-200" max="200" value="0" step="1">
+                    </div>
+                </div>
+
+                <div class="viz-control-group">
+                    <h4>🔄 Rotation (Orientation)</h4>
+                    <div class="viz-slider-container">
+                        <div class="viz-label">
+                            <span>Roll (X-Axis)</span>
+                            <span class="viz-value" id="valRX">0°</span>
+                        </div>
+                        <input type="range" class="viz-slider" id="rotX" min="-180" max="180" value="0" step="5">
+                    </div>
+                    <div class="viz-slider-container">
+                        <div class="viz-label">
+                            <span>Pitch (Y-Axis)</span>
+                            <span class="viz-value" id="valRY">0°</span>
+                        </div>
+                        <input type="range" class="viz-slider" id="rotY" min="-180" max="180" value="0" step="5">
+                    </div>
+                    <div class="viz-slider-container">
+                        <div class="viz-label">
+                            <span>Yaw (Z-Axis)</span>
+                            <span class="viz-value" id="valRZ">0°</span>
+                        </div>
+                        <input type="range" class="viz-slider" id="rotZ" min="-180" max="180" value="0" step="5">
+                    </div>
+                </div>
+
+                <button class="viz-reset-btn" onclick="resetTransform()">
+                    🔄 Reset to Origin
+                </button>
+
+                <div class="viz-matrix" id="matrixDisplay">
+                    <div style="color: #60a5fa; font-weight: bold; margin-bottom: 8px; font-size: 0.9em;">
+                        Transformation Matrix:
+                    </div>
+                    <div id="matrixOutput">Initializing...</div>
+                    <div style="margin-top: 10px; color: #10b981; font-size: 0.8em;">
+                        <strong>Legend:</strong>
+                        <span class="matrix-rot">Blue</span> = Rotation,
+                        <span class="matrix-pos">Yellow</span> = Position
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3D Viewport -->
+            <div class="viz-viewport" id="viewport">
+                <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.9); padding: 10px; border-radius: 8px; font-size: 0.85em; z-index: 10;">
+                    <strong style="color: var(--primary);">💡 Controls:</strong><br>
+                    • Drag to rotate view<br>
+                    • Adjust sliders to transform robot
+                </div>
+                <div class="viz-world" id="world">
+                    <!-- Grid -->
+                    <div class="viz-grid"></div>
+                    
+                    <!-- Fixed World Axes -->
+                    <div style="position: absolute; top: 50%; left: 50%; transform-style: preserve-3d;">
+                        <div style="position: absolute; width: 250px; height: 3px; background: rgba(255,0,0,0.3); transform: rotateZ(-90deg); transform-origin: left center;"></div>
+                        <div style="position: absolute; width: 250px; height: 3px; background: rgba(0,255,0,0.3); transform: rotateX(90deg); transform-origin: left center;"></div>
+                        <div style="position: absolute; width: 250px; height: 3px; background: rgba(0,0,255,0.3); transform-origin: left center;"></div>
+                    </div>
+                    
+                    <!-- Robot Cube -->
+                    <div class="viz-robot" id="robot">
+                        <div class="viz-face viz-front">FRONT</div>
+                        <div class="viz-face viz-back">BACK</div>
+                        <div class="viz-face viz-right">RIGHT</div>
+                        <div class="viz-face viz-left">LEFT</div>
+                        <div class="viz-face viz-top">TOP</div>
+                        <div class="viz-face viz-bottom">BOTTOM</div>
+                        
+                        <!-- Local Axes on Robot -->
+                        <div class="viz-axes">
+                            <div class="viz-axis viz-axis-x"></div>
+                            <div class="viz-axis viz-axis-y"></div>
+                            <div class="viz-axis viz-axis-z"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEARNING EXERCISES -->
+    <section class="quiz-box">
+        <h3>🎯 Try These Exercises:</h3>
+        <ol style="line-height: 2;">
+            <li><strong>Pure Translation:</strong> Set all rotations to 0°. Move only X to 100. What happens to the matrix?</li>
+            <li><strong>Pure Rotation:</strong> Set all translations to 0. Rotate Roll to 90°. Notice which matrix values change.</li>
+            <li><strong>Combined Transform:</strong> Set X=100, Roll=45°. See how rotation AND translation appear together.</li>
+            <li><strong>Full 3D Rotation:</strong> Try Roll=30°, Pitch=45°, Yaw=60°. Observe the complex rotation matrix!</li>
+            <li><strong>Reset & Explore:</strong> Use the reset button and create your own transformations!</li>
+        </ol>
+    </section>
+
+    <!-- KEY INSIGHTS -->
+    <section>
+        <h2>💡 Key Insights</h2>
+        
+        <div class="feature-grid">
+            <div class="feature-box">
+                <h3>🔍 Observation 1: Matrix Structure</h3>
+                <p>Notice that the <strong>rotation part</strong> (top-left 3×3) always changes when you adjust angles, 
+                while the <strong>position part</strong> (right column) only changes with translation sliders.</p>
+            </div>
+
+            <div class="feature-box">
+                <h3>🔍 Observation 2: Order Matters</h3>
+                <p>Rotating then translating gives a DIFFERENT result than translating then rotating. 
+                This is why matrix multiplication order is crucial in robotics!</p>
+            </div>
+
+            <div class="feature-box">
+                <h3>🔍 Observation 3: Gimbal Lock</h3>
+                <p>At Pitch=±90°, Roll and Yaw become interdependent—this is called <em>gimbal lock</em>. 
+                It's a limitation of Euler angles (quaternions solve this!).</p>
+            </div>
+
+            <div class="feature-box">
+                <h3>🔍 Observation 4: Orthonormal</h3>
+                <p>The rotation matrix columns are always <em>orthonormal</em> (perpendicular unit vectors). 
+                Try any rotation and verify: each column length = 1.</p>
+            </div>
+
+            <div class="feature-box">
+                <h3>🔍 Observation 5: Inverse Transform</h3>
+                <p>To reverse a transformation: transpose the rotation part and negate the position. 
+                This brings the robot back to origin!</p>
+            </div>
+
+            <div class="feature-box">
+                <h3>🔍 Observation 6: Real-World Use</h3>
+                <p>Every robot arm joint uses these matrices! A 6-axis robot arm multiplies SIX transformation 
+                matrices together to find the end-effector position.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- REAL-WORLD APPLICATIONS -->
+    <section>
+        <h2>🌍 Real-World Applications</h2>
+        
+        <div class="explanation-box">
+            <h4>🤖 Industrial Robotics</h4>
+            <p>
+                Manufacturing robots use transformation matrices to calculate tool positions. 
+                For a 6-axis arm, you multiply 6 matrices to find where the tool is!
+            </p>
+        </div>
+
+        <div class="explanation-box">
+            <h4>🎮 Computer Graphics</h4>
+            <p>
+                Video games and 3D software use these exact matrices for character movement, 
+                camera control, and object placement.
+            </p>
+        </div>
+
+        <div class="explanation-box">
+            <h4>🚁 Drones & Navigation</h4>
+            <p>
+                Drones continuously calculate their transformation matrix from GPS and IMU sensors 
+                to maintain stable flight.
+            </p>
+        </div>
+
+        <div class="explanation-box">
+            <h4>🏥 Medical Robotics</h4>
+            <p>
+                Surgical robots use precise transformation matrices to position instruments 
+                within millimeters of accuracy during operations.
+            </p>
+        </div>
+    </section>
+
+    <!-- FURTHER LEARNING -->
+    <section style="background: var(--light); padding: 40px; border-radius: 12px;">
+        <h2>📚 Further Learning</h2>
+        <p><strong>Want to dive deeper?</strong> Here are recommended topics:</p>
+        <ul style="line-height: 2;">
+            <li><strong>Denavit-Hartenberg Parameters:</strong> Standard convention for robot arm kinematics</li>
+            <li><strong>Quaternions:</strong> Alternative to Euler angles without gimbal lock</li>
+            <li><strong>Forward Kinematics:</strong> Computing end-effector position from joint angles</li>
+            <li><strong>Inverse Kinematics:</strong> Computing joint angles from desired position</li>
+            <li><strong>Homogeneous Transforms:</strong> Deeper dive into 4×4 matrix theory</li>
+            <li><strong>Rotation Representations:</strong> Axis-angle, rotation vectors, SO(3) group</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>🎓 CSC4702 Group Project – 2025/2026 | Advancing Robotics Education</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // ========================================
+        // EMBEDDED 3D VISUALIZER COMPONENT
+        // ========================================
+
+        // State
+        let cameraRotX = -20;
+        let cameraRotY = 30;
+        let isDragging = false;
+        let lastMouseX = 0;
+        let lastMouseY = 0;
+
+        // Elements
+        const robot = document.getElementById('robot');
+        const world = document.getElementById('world');
+        const viewport = document.getElementById('viewport');
+        const matrixOutput = document.getElementById('matrixOutput');
+
+        // Sliders
+        const sliders = {
+            posX: document.getElementById('posX'),
+            posY: document.getElementById('posY'),
+            posZ: document.getElementById('posZ'),
+            rotX: document.getElementById('rotX'),
+            rotY: document.getElementById('rotY'),
+            rotZ: document.getElementById('rotZ')
+        };
+
+        // Initialize
+        function init() {
+            Object.keys(sliders).forEach(key => {
+                sliders[key].addEventListener('input', updateVisualization);
+            });
+
+            viewport.addEventListener('mousedown', startDrag);
+            viewport.addEventListener('mousemove', drag);
+            viewport.addEventListener('mouseup', endDrag);
+            viewport.addEventListener('mouseleave', endDrag);
+
+            updateVisualization();
+        }
+
+        // Update visualization
+        function updateVisualization() {
+            const px = parseFloat(sliders.posX.value);
+            const py = parseFloat(sliders.posY.value);
+            const pz = parseFloat(sliders.posZ.value);
+            const rx = parseFloat(sliders.rotX.value);
+            const ry = parseFloat(sliders.rotY.value);
+            const rz = parseFloat(sliders.rotZ.value);
+
+            document.getElementById('valX').textContent = px;
+            document.getElementById('valY').textContent = py;
+            document.getElementById('valZ').textContent = pz;
+            document.getElementById('valRX').textContent = rx + '°';
+            document.getElementById('valRY').textContent = ry + '°';
+            document.getElementById('valRZ').textContent = rz + '°';
+
+            // Apply transformation (fixed - no distortion)
+            robot.style.transform = `
+                translate3d(${px}px, ${-py}px, ${pz}px)
+                rotateX(${rx}deg)
+                rotateY(${ry}deg)
+                rotateZ(${rz}deg)
+            `;
+
+            updateMatrix(px, py, pz, rx, ry, rz);
+        }
+
+        // Calculate 4x4 transformation matrix (CORRECTED - ZYX Euler)
+        function updateMatrix(x, y, z, rx, ry, rz) {
+            const toRad = Math.PI / 180;
+            const alpha = rx * toRad;  // Roll (X)
+            const beta = ry * toRad;   // Pitch (Y)
+            const gamma = rz * toRad;  // Yaw (Z)
+
+            // Precompute trig values
+            const ca = Math.cos(alpha), sa = Math.sin(alpha);
+            const cb = Math.cos(beta), sb = Math.sin(beta);
+            const cg = Math.cos(gamma), sg = Math.sin(gamma);
+
+            // ZYX Euler angle rotation matrix
+            const r11 = cb * cg;
+            const r12 = sa * sb * cg - ca * sg;
+            const r13 = ca * sb * cg + sa * sg;
+            
+            const r21 = cb * sg;
+            const r22 = sa * sb * sg + ca * cg;
+            const r23 = ca * sb * sg - sa * cg;
+            
+            const r31 = -sb;
+            const r32 = sa * cb;
+            const r33 = ca * cb;
+
+            // Scale translation for display (pixels to units)
+            const px = (x / 100).toFixed(2);
+            const py = (y / 100).toFixed(2);
+            const pz = (z / 100).toFixed(2);
+
+            // Format matrix with proper spacing
+            const f = (v) => v.toFixed(2).padStart(7);
+            
+            matrixOutput.innerHTML = 
+`<span class="matrix-rot">[${f(r11)} ${f(r12)} ${f(r13)}</span>  <span class="matrix-pos">${f(parseFloat(px))}]</span>
+<span class="matrix-rot">[${f(r21)} ${f(r22)} ${f(r23)}</span>  <span class="matrix-pos">${f(parseFloat(py))}]</span>
+<span class="matrix-rot">[${f(r31)} ${f(r32)} ${f(r33)}</span>  <span class="matrix-pos">${f(parseFloat(pz))}]</span>
+[${'0.00'.padStart(7)} ${'0.00'.padStart(7)} ${'0.00'.padStart(7)}  ${'1.00'.padStart(7)}]`;
+        }
+
+        // Reset transformation
+        function resetTransform() {
+            Object.values(sliders).forEach(slider => slider.value = 0);
+            updateVisualization();
+        }
+
+        // Camera drag controls
+        function startDrag(e) {
+            isDragging = true;
+            lastMouseX = e.clientX;
+            lastMouseY = e.clientY;
+        }
+
+        function drag(e) {
+            if (!isDragging) return;
+            
+            const deltaX = e.clientX - lastMouseX;
+            const deltaY = e.clientY - lastMouseY;
+            
+            cameraRotY += deltaX * 0.5;
+            cameraRotX += deltaY * 0.5;
+            cameraRotX = Math.max(-90, Math.min(90, cameraRotX));
+            
+            world.style.transform = `
+                translateZ(-200px)
+                rotateX(${cameraRotX}deg)
+                rotateY(${cameraRotY}deg)
+            `;
+            
+            lastMouseX = e.clientX;
+            lastMouseY = e.clientY;
+        }
+
+        function endDrag() {
+            isDragging = false;
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+
+</body>
+
+</html>
