@@ -17,17 +17,9 @@
 
 This comprehensive educational project introduces the fundamental concepts of **position and orientation** in robotics across three progressive educational levels:
 
-- 🎯 **Junior School (Ages 13-15)**: Intuitive, visual explanations
+- 🎯 **Junior School**: Intuitive, visual explanations
 - 📐 **High School**: Mathematical foundations with trigonometry
 - 🎓 **Undergraduate**: Advanced transformation matrices
-
-### 🌟 Key Features
-
-✅ **Unified Narrative**: Continuous storyline featuring Rover, our delivery robot  
-✅ **Progressive Learning**: Builds from intuition to formal mathematics  
-✅ **Interactive Visualizer**: Real-time 3D transformation manipulation  
-✅ **Professional Design**: Modern, responsive, and accessible interface  
-✅ **Educational Videos**: Three-tier video series with consistent themes  
 
 ---
 
@@ -57,12 +49,6 @@ CSC4702-Project/
 ├── interactive/
 │   └── visualizer.html     # Advanced 3D transformation visualizer
 │
-├── assets/
-│   ├── video1.mp4          # Junior school video
-│   ├── video2.mp4          # High school video
-│   ├── video3.mp4          # Undergraduate video
-│   └── images/             # Thumbnails and graphics
-│
 └── README.md               # This file
 ```
 
@@ -82,56 +68,25 @@ By engaging with this project, learners will:
 
 ## 🎬 Video Series
 
-### Video 1: Junior School (3-4 minutes)
+### Video 1: Junior School
 **Focus**: Compass directions and intuitive navigation  
-**Math Level**: None—visual and conceptual  
 **Key Concepts**: How robots know which way they're facing
 
-### Video 2: High School (4-5 minutes)
+### Video 2: High School
 **Focus**: Angles, trigonometry, and 2×2 rotation matrices  
-**Math Level**: Basic trigonometry  
 **Key Concepts**: Converting directions into mathematical formulas
 
-### Video 3: Undergraduate (5-6 minutes)
+### Video 3: Undergraduate
 **Focus**: 4×4 homogeneous transformation matrices  
-**Math Level**: Linear algebra  
 **Key Concepts**: Professional robotics mathematics and frame composition
 
 ---
 
 ## 🎮 Interactive Visualizer
 
-The **3D Transformation Visualizer** features:
-
-- ✨ Real-time matrix updates as you manipulate parameters
-- 🎨 Color-coded coordinate axes (X, Y, Z)
-- 🔄 Independent control of Roll, Pitch, and Yaw rotations
-- 📊 Live 4×4 transformation matrix display
-- 🎯 Educational annotations explaining concepts
-- 🔄 Reset functionality for easy experimentation
+An interactive 3D tool where you can manipulate a robot's position and orientation in real-time. Adjust translation (X, Y, Z) and rotation (Roll, Pitch, Yaw) parameters to see how they affect the transformation matrix.
 
 **Launch it from**: `interactive.html` → "Launch Interactive Visualizer"
-
----
-
-## 💻 Technical Features
-
-### Modern Design
-- **Responsive Layout**: Works on desktop, tablet, and mobile
-- **Smooth Animations**: CSS3 and JavaScript animations throughout
-- **Gradient Aesthetics**: Professional color schemes
-- **Interactive Elements**: Hover effects, transitions, and ripple effects
-
-### Enhanced Interactivity
-- **Scroll Animations**: Sections fade in as you scroll
-- **Video Tracking**: Completion notifications and progress tracking
-- **Navigation Highlighting**: Current page clearly indicated
-- **Keyboard Shortcuts**: Press 'H' to return home
-
-### Performance Optimized
-- **Lightweight**: Fast loading with minimal dependencies
-- **Modern Standards**: HTML5, CSS3, ES6 JavaScript
-- **Cross-Browser**: Compatible with all modern browsers
 
 ---
 
@@ -155,59 +110,12 @@ We introduce complexity gradually:
 
 ---
 
-## 🏆 Project Achievements
+## 👥 Team - RoboRangers
 
-✅ **Unified Narrative**: Single story across all educational levels  
-✅ **Interactive Learning**: Engaging 3D visualizer for experimentation  
-✅ **Professional Presentation**: Modern, polished interface  
-✅ **Educational Impact**: Multi-modal learning (video, interactive, text)  
-✅ **Accessibility**: Clear explanations for diverse audiences  
-
----
-
-## 📚 References
-
-- Craig, J. J. (2017). *Introduction to Robotics: Mechanics and Control*. Pearson.
-- Spong, M. W., Hutchinson, S., & Vidyasagar, M. (2006). *Robot Modeling and Control*. Wiley.
-- Lynch, K. M., & Park, F. C. (2017). *Modern Robotics*. Cambridge University Press.
-- CSC4702 Course Materials (2025/2026)
-
----
-
-## 🙏 Acknowledgments
-
-This project was developed as part of **CSC4702 – Community Engagement Through Robotics Education**.
-
-**Thanks to**:
-- Course instructors for guidance and academic resources
-- Peer reviewers for feedback on educational effectiveness
-- Open-source community for visualization tools and libraries
-
----
-
-## 👥 Team
-
-**CSC4702 Group Project**  
-Academic Year: 2025/2026
-
----
-
-## 📧 Contact
-
-For questions about this educational project, please contact through the course platform.
-
----
-
-## 📄 License
-
-Educational project for CSC4702. Course materials used with permission.
-
----
-
-<div align="center">
-
-**🤖 Advancing Robotics Education Through Interactive Learning 🚀**
-
-*Made with ❤️ for CSC4702*
-
-</div>
+| Name                    | Matric Number |
+|-------------------------|---------------|
+| Chan Ci En              | 215035        |
+| Chu Xing En             | 215090        |
+| Quah Eugene             | 216806        |
+| Tan Yong Jin            | 217086        |
+| S. Jeevan A/L Sivakumar | 216840        |

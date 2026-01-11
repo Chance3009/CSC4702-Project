@@ -121,7 +121,7 @@ function initializeVideoTracking() {
 
         // Track video plays
         video.addEventListener('play', function () {
-            console.log(`📹 Video ${index + 1} started playing`);
+            console.log(`Video ${index + 1} started playing`);
         });
 
         // Track video completion
@@ -144,9 +144,9 @@ function initializeVideoTracking() {
 // ========================================
 function showVideoCompletionMessage(video, index) {
     const messages = [
-        "Great! Now try Video 2 to see how math connects to intuition! 📐",
-        "Excellent! Ready for the advanced concepts in Video 3? 🎓",
-        "Outstanding! Now explore the interactive visualizer! 🚀"
+        "Great! Now try Video 2 to see how math connects to intuition!",
+        "Excellent! Ready for the advanced concepts in Video 3?",
+        "Outstanding! Now explore the interactive visualizer!"
     ];
 
     if (messages[index]) {
@@ -284,6 +284,6 @@ document.head.appendChild(styleSheet);
 // PERFORMANCE MONITORING (Development)
 // ========================================
 console.log('🤖 Robotics Education Portal');
-console.log('📊 Page Load Time:', Math.round(performance.now()), 'ms');
-console.log('🎯 Current Page:', window.location.pathname);
+console.log('Page Load Time:', Math.round(performance.now()), 'ms');
+console.log('Current Page:', window.location.pathname);
 
