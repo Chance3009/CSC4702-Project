@@ -53,20 +53,29 @@ header::before {
     right: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
     animation: pulse 15s ease-in-out infinite;
 }
 
 @keyframes pulse {
-    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.3; }
-    50% { transform: scale(1.2) rotate(180deg); opacity: 0.6; }
+
+    0%,
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: scale(1.2) rotate(180deg);
+        opacity: 0.6;
+    }
 }
 
 header h1 {
     font-size: 2.5em;
     font-weight: 800;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     position: relative;
     z-index: 1;
     animation: slideDown 0.8s ease-out;
@@ -86,6 +95,7 @@ header p {
         opacity: 0;
         transform: translateY(-30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -157,17 +167,32 @@ section {
     animation-fill-mode: forwards;
 }
 
-section:nth-child(1) { animation-delay: 0.1s; }
-section:nth-child(2) { animation-delay: 0.2s; }
-section:nth-child(3) { animation-delay: 0.3s; }
-section:nth-child(4) { animation-delay: 0.4s; }
-section:nth-child(5) { animation-delay: 0.5s; }
+section:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+section:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+section:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+section:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+section:nth-child(5) {
+    animation-delay: 0.5s;
+}
 
 @keyframes fadeIn {
     from {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -262,15 +287,24 @@ section ul li:hover::before {
     left: 0;
 }
 
-.video-card:nth-child(1) { animation-delay: 0.1s; }
-.video-card:nth-child(2) { animation-delay: 0.2s; }
-.video-card:nth-child(3) { animation-delay: 0.3s; }
+.video-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.video-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.video-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
 
 @keyframes fadeInUp {
     from {
         opacity: 0;
         transform: translateY(40px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -437,24 +471,24 @@ footer p {
     header h1 {
         font-size: 1.8em;
     }
-    
+
     header p {
         font-size: 1em;
     }
-    
+
     nav a {
         display: block;
         padding: 15px;
     }
-    
+
     section {
         padding: 40px 20px;
     }
-    
+
     .video-card {
         padding: 25px;
     }
-    
+
     .feature-grid {
         grid-template-columns: 1fr;
     }
@@ -502,6 +536,7 @@ footer p {
     0% {
         background-position: -1000px 0;
     }
+
     100% {
         background-position: 1000px 0;
     }
@@ -527,9 +562,12 @@ footer p {
    FLOATING ANIMATION
    ======================================== */
 @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0px);
     }
+
     50% {
         transform: translateY(-10px);
     }
@@ -559,6 +597,7 @@ footer p {
         transform: scale(0.8);
         opacity: 1;
     }
+
     100% {
         transform: scale(1.2);
         opacity: 0;
@@ -572,9 +611,17 @@ footer p {
 /* ========================================
    UTILITY CLASSES
    ======================================== */
-.text-center { text-align: center; }
-.mt-40 { margin-top: 40px; }
-.mb-40 { margin-bottom: 40px; }
+.text-center {
+    text-align: center;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+.mb-40 {
+    margin-bottom: 40px;
+}
 
 .highlight {
     background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
@@ -650,15 +697,24 @@ footer p {
     animation: slideIn 0.5s ease-out backwards;
 }
 
-.viz-slider-container:nth-child(2) { animation-delay: 0.1s; }
-.viz-slider-container:nth-child(3) { animation-delay: 0.2s; }
-.viz-slider-container:nth-child(4) { animation-delay: 0.3s; }
+.viz-slider-container:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.viz-slider-container:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.viz-slider-container:nth-child(4) {
+    animation-delay: 0.3s;
+}
 
 @keyframes slideIn {
     from {
         opacity: 0;
         transform: translateX(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -806,12 +862,35 @@ footer p {
     filter: brightness(1.2);
 }
 
-.viz-front { background: rgba(255, 99, 71, 0.85); transform: translateZ(50px); }
-.viz-back { background: rgba(255, 99, 71, 0.85); transform: rotateY(180deg) translateZ(50px); }
-.viz-right { background: rgba(60, 179, 113, 0.85); transform: rotateY(90deg) translateZ(50px); }
-.viz-left { background: rgba(60, 179, 113, 0.85); transform: rotateY(-90deg) translateZ(50px); }
-.viz-top { background: rgba(100, 149, 237, 0.85); transform: rotateX(90deg) translateZ(50px); }
-.viz-bottom { background: rgba(100, 149, 237, 0.85); transform: rotateX(-90deg) translateZ(50px); }
+.viz-front {
+    background: rgba(255, 99, 71, 0.85);
+    transform: translateZ(50px);
+}
+
+.viz-back {
+    background: rgba(255, 99, 71, 0.85);
+    transform: rotateY(180deg) translateZ(50px);
+}
+
+.viz-right {
+    background: rgba(60, 179, 113, 0.85);
+    transform: rotateY(90deg) translateZ(50px);
+}
+
+.viz-left {
+    background: rgba(60, 179, 113, 0.85);
+    transform: rotateY(-90deg) translateZ(50px);
+}
+
+.viz-top {
+    background: rgba(100, 149, 237, 0.85);
+    transform: rotateX(90deg) translateZ(50px);
+}
+
+.viz-bottom {
+    background: rgba(100, 149, 237, 0.85);
+    transform: rotateX(-90deg) translateZ(50px);
+}
 
 .viz-axes {
     position: absolute;
@@ -830,9 +909,22 @@ footer p {
     transition: all 0.3s ease;
 }
 
-.viz-axis-x { width: 180px; background: #ef4444; transform: rotateZ(-90deg); }
-.viz-axis-y { width: 180px; background: #10b981; transform: rotateX(90deg); }
-.viz-axis-z { width: 180px; background: #3b82f6; }
+.viz-axis-x {
+    width: 180px;
+    background: #ef4444;
+    transform: rotateZ(-90deg);
+}
+
+.viz-axis-y {
+    width: 180px;
+    background: #10b981;
+    transform: rotateX(90deg);
+}
+
+.viz-axis-z {
+    width: 180px;
+    background: #3b82f6;
+}
 
 .viz-matrix {
     margin-top: 10px;
@@ -848,7 +940,7 @@ footer p {
     transition: all 0.3s ease;
 }
 
-.viz-matrix > div {
+.viz-matrix>div {
     text-align: left;
 }
 
@@ -856,8 +948,14 @@ footer p {
     box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3), 0 4px 20px rgba(16, 185, 129, 0.2);
 }
 
-.matrix-pos { color: #fbbf24; font-weight: bold; }
-.matrix-rot { color: #60a5fa; }
+.matrix-pos {
+    color: #fbbf24;
+    font-weight: bold;
+}
+
+.matrix-rot {
+    color: #60a5fa;
+}
 
 .viz-reset-btn {
     width: 100%;
@@ -890,7 +988,7 @@ footer p {
     height: 1000px;
     left: -500px;
     top: -500px;
-    background-image: 
+    background-image:
         linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
     background-size: 50px 50px;
@@ -911,7 +1009,9 @@ footer p {
 
 /* Loading Animation */
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .viz-loading {

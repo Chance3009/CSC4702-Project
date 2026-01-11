@@ -164,7 +164,7 @@
 <body>
 
     <header>
-        <h1>🎓 Interactive Robotics Learning</h1>
+        <h1>Interactive Robotics Learning</h1>
         <p>Understanding Position & Orientation Through Theory and Practice</p>
     </header>
 
@@ -177,14 +177,14 @@
 
     <!-- THEORETICAL FOUNDATION -->
     <section>
-        <h2>📚 Theoretical Foundation</h2>
+        <h2>Theoretical Foundation</h2>
         <p>
             Before diving into the interactive visualizer, let's understand the <strong>mathematical theory</strong> 
             behind robot transformations. This knowledge is fundamental to robotics, computer graphics, and spatial reasoning.
         </p>
 
         <div class="theory-section">
-            <h3>🎯 What is a Transformation Matrix?</h3>
+            <h3>What is a Transformation Matrix?</h3>
             <p>
                 A <span class="concept-highlight">transformation matrix</span> is a mathematical tool that describes 
                 how to move an object from one location and orientation to another in 3D space. Think of it as a 
@@ -260,7 +260,7 @@
         </div>
 
         <div class="theory-section">
-            <h3>🎓 Part 3: Complete 4×4 Transformation Matrix</h3>
+            <h3>Part 3: Complete 4×4 Transformation Matrix</h3>
             <p>
                 By combining rotation and translation into a single <span class="concept-highlight">4×4 matrix</span>, 
                 we can represent any position and orientation in 3D space:
@@ -280,7 +280,7 @@
             </div>
 
             <div class="explanation-box">
-                <h4>💡 Why 4×4 instead of just 3×3?</h4>
+                <h4>Why 4×4 instead of just 3×3?</h4>
                 <p>
                     The 4×4 format uses <strong>homogeneous coordinates</strong>, which allows us to:
                 </p>
@@ -424,7 +424,7 @@
             <!-- 3D Viewport -->
             <div class="viz-viewport" id="viewport">
                 <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.9); padding: 10px; border-radius: 8px; font-size: 0.85em; z-index: 10;">
-                    <strong style="color: var(--primary);">💡 Controls:</strong><br>
+                    <strong style="color: var(--primary);">Controls:</strong><br>
                     • Drag to rotate view<br>
                     • Adjust sliders to transform robot
                 </div>
@@ -462,7 +462,7 @@
 
     <!-- LEARNING EXERCISES -->
     <section class="quiz-box">
-        <h3>🎯 Try These Exercises:</h3>
+        <h3>Try These Exercises:</h3>
         <ol style="line-height: 2;">
             <li><strong>Pure Translation:</strong> Set all rotations to 0°. Move only X to 100. What happens to the matrix?</li>
             <li><strong>Pure Rotation:</strong> Set all translations to 0. Rotate Roll to 90°. Notice which matrix values change.</li>
@@ -474,41 +474,41 @@
 
     <!-- KEY INSIGHTS -->
     <section>
-        <h2>💡 Key Insights</h2>
+        <h2>Key Insights</h2>
         
         <div class="feature-grid">
             <div class="feature-box">
-                <h3>🔍 Observation 1: Matrix Structure</h3>
+                <h3>Observation 1: Matrix Structure</h3>
                 <p>Notice that the <strong>rotation part</strong> (top-left 3×3) always changes when you adjust angles, 
                 while the <strong>position part</strong> (right column) only changes with translation sliders.</p>
             </div>
 
             <div class="feature-box">
-                <h3>🔍 Observation 2: Order Matters</h3>
+                <h3>Observation 2: Order Matters</h3>
                 <p>Rotating then translating gives a DIFFERENT result than translating then rotating. 
                 This is why matrix multiplication order is crucial in robotics!</p>
             </div>
 
             <div class="feature-box">
-                <h3>🔍 Observation 3: Gimbal Lock</h3>
+                <h3>Observation 3: Gimbal Lock</h3>
                 <p>At Pitch=±90°, Roll and Yaw become interdependent—this is called <em>gimbal lock</em>. 
                 It's a limitation of Euler angles (quaternions solve this!).</p>
             </div>
 
             <div class="feature-box">
-                <h3>🔍 Observation 4: Orthonormal</h3>
+                <h3>Observation 4: Orthonormal</h3>
                 <p>The rotation matrix columns are always <em>orthonormal</em> (perpendicular unit vectors). 
                 Try any rotation and verify: each column length = 1.</p>
             </div>
 
             <div class="feature-box">
-                <h3>🔍 Observation 5: Inverse Transform</h3>
+                <h3>Observation 5: Inverse Transform</h3>
                 <p>To reverse a transformation: transpose the rotation part and negate the position. 
                 This brings the robot back to origin!</p>
             </div>
 
             <div class="feature-box">
-                <h3>🔍 Observation 6: Real-World Use</h3>
+                <h3>Observation 6: Real-World Use</h3>
                 <p>Every robot arm joint uses these matrices! A 6-axis robot arm multiplies SIX transformation 
                 matrices together to find the end-effector position.</p>
             </div>
@@ -517,7 +517,7 @@
 
     <!-- REAL-WORLD APPLICATIONS -->
     <section>
-        <h2>🌍 Real-World Applications</h2>
+        <h2>Real-World Applications</h2>
         
         <div class="explanation-box">
             <h4>🤖 Industrial Robotics</h4>
@@ -554,7 +554,7 @@
 
     <!-- FURTHER LEARNING -->
     <section style="background: var(--light); padding: 40px; border-radius: 12px;">
-        <h2>📚 Further Learning</h2>
+        <h2>Further Learning</h2>
         <p><strong>Want to dive deeper?</strong> Here are recommended topics:</p>
         <ul style="line-height: 2;">
             <li><strong>Denavit-Hartenberg Parameters:</strong> Standard convention for robot arm kinematics</li>
@@ -567,7 +567,7 @@
     </section>
 
     <footer>
-        <p>🎓 CSC4702 Group Project – 2025/2026 | Advancing Robotics Education</p>
+        <p>CSC4702 Group Project – 2025/2026 | Advancing Robotics Education</p>
     </footer>
 
     <script src="script.js"></script>

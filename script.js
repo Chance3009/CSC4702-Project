@@ -21,19 +21,19 @@ function initializeNavigation() {
 
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
-        
+
         // Highlight active page
-        if (href === currentPage || 
+        if (href === currentPage ||
             (currentPage.includes('visualizer') && href === 'interactive.html')) {
             link.classList.add('active');
         }
 
         // Add hover effect sound (visual feedback)
-        link.addEventListener('mouseenter', function() {
+        link.addEventListener('mouseenter', function () {
             this.style.transform = 'scale(1.05)';
         });
-        
-        link.addEventListener('mouseleave', function() {
+
+        link.addEventListener('mouseleave', function () {
             this.style.transform = 'scale(1)';
         });
     });
@@ -114,24 +114,24 @@ function initializeAnimations() {
 // ========================================
 function initializeVideoTracking() {
     const videos = document.querySelectorAll('video');
-    
+
     videos.forEach((video, index) => {
         // Add play button overlay styling
         video.style.cursor = 'pointer';
-        
+
         // Track video plays
-        video.addEventListener('play', function() {
+        video.addEventListener('play', function () {
             console.log(`📹 Video ${index + 1} started playing`);
         });
 
         // Track video completion
-        video.addEventListener('ended', function() {
+        video.addEventListener('ended', function () {
             console.log(`✅ Video ${index + 1} completed`);
             showVideoCompletionMessage(this, index);
         });
 
         // Track video pause
-        video.addEventListener('pause', function() {
+        video.addEventListener('pause', function () {
             if (!this.ended) {
                 console.log(`⏸️ Video ${index + 1} paused at ${Math.round(this.currentTime)}s`);
             }
@@ -183,7 +183,7 @@ function addLoadingAnimation() {
     // Smooth page load
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-    
+
     requestAnimationFrame(() => {
         document.body.style.opacity = '1';
     });
@@ -207,7 +207,7 @@ function addLoadingAnimation() {
 // BUTTON RIPPLE EFFECT
 // ========================================
 document.querySelectorAll('.button').forEach(button => {
-    button.addEventListener('click', function(e) {
+    button.addEventListener('click', function (e) {
         const ripple = document.createElement('span');
         const rect = this.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);
@@ -235,7 +235,7 @@ document.querySelectorAll('.button').forEach(button => {
 // ========================================
 // KEYBOARD NAVIGATION
 // ========================================
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
     // Press 'H' to go home
     if (e.key === 'h' || e.key === 'H') {
         if (!e.target.matches('input, textarea')) {
