@@ -158,6 +158,154 @@
         #matrixOutput {
             text-align: left !important;
         }
+
+        /* UPDATES, for translation, rotation and transformation matrix */
+
+        /* --- Styles for the New Matrix Composition Section --- */
+        .matrix-composition-section {
+            background: white;
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 1200px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .equation-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .matrix-block-wrapper h4 {
+            margin: 0 0 10px 0;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .math-operator {
+            font-size: 1.5rem;
+            color: #cbd5e1;
+            font-weight: 800;
+            margin: 0 10px;
+        }
+
+        /* The Grid Layouts */
+        .matrix-grid-3x3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+            padding: 10px;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+
+        .matrix-grid-3x1 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4px;
+            padding: 10px;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+
+        .matrix-grid-4x4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4px;
+            padding: 10px;
+            background: #f0fdf4; /* Light green tint for final result */
+            border-radius: 8px;
+        }
+
+        /* The Number Cells */
+        .m-cell {
+            padding: 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        /* Color Classes matching design */
+        .c-blue { color: var(--primary); background: #eef2ff; font-weight: 600; }
+        .c-orange { color: #f59e0b; background: #fffbeb; font-weight: 600; }
+        .c-grey { color: #94a3b8; font-size: 0.8em; }
+        .c-black { color: #1e293b; font-weight: 700; }
+
+        @media (max-width: 800px) {
+            .equation-container { flex-direction: column; }
+            .math-operator { transform: rotate(90deg); margin: 10px; }
+        }
+
+        /* COMPACT SIDEBAR MATRIX STYLES */
+        .viz-matrix {
+            margin-top: 25px;
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .mini-matrix-label {
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        /* Grids */
+        .mini-grid-3x3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3px;
+            background: white;
+            padding: 5px;
+            border-radius: 4px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .mini-grid-3x1 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Displayed horizontally for compactness */
+            gap: 3px;
+            background: white;
+            padding: 5px;
+            border-radius: 4px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .mini-grid-4x4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            background: #f0fdf4;
+            padding: 5px;
+            border-radius: 4px;
+            border: 1px solid #bbf7d0;
+        }
+
+        /* The Tiny Cells */
+        .mini-cell {
+            font-family: 'Courier New', monospace;
+            font-size: 0.75em;
+            text-align: center;
+            padding: 2px 0;
+            border-radius: 2px;
+        }
+
+        /* Color Coding */
+        .mc-blue { color: var(--primary); background: #eef2ff; font-weight: 600; }
+        .mc-orange { color: #d97706; background: #fffbeb; font-weight: 600; }
+        .mc-green { color: #059669; font-weight: 600; }
+        .mc-grey { color: #618fc7; }
+
     </style>
 </head>
 
@@ -410,17 +558,23 @@
                 </button>
 
                 <div class="viz-matrix" id="matrixDisplay">
-                    <div style="color: #60a5fa; font-weight: bold; margin-bottom: 8px; font-size: 0.9em;">
-                        Transformation Matrix:
+                    <div style="text-align: center; margin-bottom: 15px; font-weight: bold; color: #334155;">
+                        🧮 Live Matrix Builder
                     </div>
-                    <div id="matrixOutput">Initializing...</div>
-                    <div style="margin-top: 10px; color: #10b981; font-size: 0.8em;">
-                        <strong>Legend:</strong>
-                        <span class="matrix-rot">Blue</span> = Rotation,
-                        <span class="matrix-pos">Yellow</span> = Position
-                    </div>
+
+                    <div class="mini-matrix-label" style="color: var(--primary);">Rotation (3×3)</div>
+                    <div id="sideRot" class="mini-grid-3x3"></div>
+
+                    <div class="mini-matrix-label" style="color: #d97706; margin-top: 10px;">Translation (3×1)</div>
+                    <div id="sideTrans" class="mini-grid-3x1"></div>
+
+                    <div style="text-align: center; color: #94a3b8; margin: 5px 0;">⬇ Combines Into ⬇</div>
+
+                    <div class="mini-matrix-label" style="color: #10b981;">Homogeneous Matrix (4×4)</div>
+                    <div id="sideFinal" class="mini-grid-4x4"></div>
                 </div>
             </div>
+
 
             <!-- 3D Viewport -->
             <div class="viz-viewport" id="viewport">
@@ -434,16 +588,18 @@
                     <!-- Grid -->
                     <div class="viz-grid"></div>
 
-                    <!-- Fixed World Axes -->
+                    <!-- UPDATED:Fixed World Axes -->
                     <div style="position: absolute; top: 50%; left: 50%; transform-style: preserve-3d;">
-                        <div
-                            style="position: absolute; width: 250px; height: 3px; background: rgba(255,0,0,0.3); transform: rotateZ(-90deg); transform-origin: left center;">
+                        <div style="position: absolute; width: 250px; height: 3px; background: rgba(255,0,0,0.5); transform-origin: left center;">
+                            <span style="position: absolute; right: -20px; color: red; font-weight: bold;">X</span>
                         </div>
-                        <div
-                            style="position: absolute; width: 250px; height: 3px; background: rgba(0,255,0,0.3); transform: rotateX(90deg); transform-origin: left center;">
+                        
+                        <div style="position: absolute; width: 250px; height: 3px; background: rgba(0,255,0,0.5); transform: rotateZ(-90deg); transform-origin: left center;">
+                            <span style="position: absolute; right: -20px; color: green; font-weight: bold;">Y</span>
                         </div>
-                        <div
-                            style="position: absolute; width: 250px; height: 3px; background: rgba(0,0,255,0.3); transform-origin: left center;">
+                        
+                        <div style="position: absolute; width: 250px; height: 3px; background: rgba(0,0,255,0.5); transform: rotateY(90deg); transform-origin: left center;">
+                            <span style="position: absolute; right: -20px; color: blue; font-weight: bold;">Z</span>
                         </div>
                     </div>
 
@@ -653,18 +809,18 @@
         }
 
         // Calculate 4x4 transformation matrix (CORRECTED - ZYX Euler)
+        // UPDATED Matrix Logic Function
         function updateMatrix(x, y, z, rx, ry, rz) {
             const toRad = Math.PI / 180;
-            const alpha = rx * toRad;  // Roll (X)
-            const beta = ry * toRad;   // Pitch (Y)
-            const gamma = rz * toRad;  // Yaw (Z)
+            const alpha = rx * toRad; 
+            const beta = ry * toRad;  
+            const gamma = rz * toRad; 
 
-            // Precompute trig values
             const ca = Math.cos(alpha), sa = Math.sin(alpha);
             const cb = Math.cos(beta), sb = Math.sin(beta);
             const cg = Math.cos(gamma), sg = Math.sin(gamma);
 
-            // ZYX Euler angle rotation matrix
+            // 1. Rotation Logic
             const r11 = cb * cg;
             const r12 = sa * sb * cg - ca * sg;
             const r13 = ca * sb * cg + sa * sg;
@@ -677,19 +833,37 @@
             const r32 = sa * cb;
             const r33 = ca * cb;
 
-            // Scale translation for display (pixels to units)
-            const px = (x / 100).toFixed(2);
-            const py = (y / 100).toFixed(2);
-            const pz = (z / 100).toFixed(2);
+            // 2. Translation Logic
+            const px = (x).toFixed(0); // Removing decimals for compactness in sidebar
+            const py = (y).toFixed(0);
+            const pz = (z).toFixed(0);
+            
+            // Helper for formatting
+            const f = (n) => n.toFixed(2);
 
-            // Format matrix with proper spacing
-            const f = (v) => v.toFixed(2).padStart(7);
+            // --- UPDATE SIDEBAR HTML ---
 
-            matrixOutput.innerHTML =
-                `<span class="matrix-rot">[${f(r11)} ${f(r12)} ${f(r13)}</span>  <span class="matrix-pos">${f(parseFloat(px))}]</span>
-<span class="matrix-rot">[${f(r21)} ${f(r22)} ${f(r23)}</span>  <span class="matrix-pos">${f(parseFloat(py))}]</span>
-<span class="matrix-rot">[${f(r31)} ${f(r32)} ${f(r33)}</span>  <span class="matrix-pos">${f(parseFloat(pz))}]</span>
-[${'0.00'.padStart(7)} ${'0.00'.padStart(7)} ${'0.00'.padStart(7)}  ${'1.00'.padStart(7)}]`;
+            // A. Rotation (3x3)
+            document.getElementById('sideRot').innerHTML = `
+                <div class="mini-cell mc-blue">${f(r11)}</div> <div class="mini-cell mc-blue">${f(r12)}</div> <div class="mini-cell mc-blue">${f(r13)}</div>
+                <div class="mini-cell mc-blue">${f(r21)}</div> <div class="mini-cell mc-blue">${f(r22)}</div> <div class="mini-cell mc-blue">${f(r23)}</div>
+                <div class="mini-cell mc-blue">${f(r31)}</div> <div class="mini-cell mc-blue">${f(r32)}</div> <div class="mini-cell mc-blue">${f(r33)}</div>
+            `;
+
+            // B. Translation (3x1)
+            document.getElementById('sideTrans').innerHTML = `
+                <div class="mini-cell mc-orange">${px}</div>
+                <div class="mini-cell mc-orange">${py}</div>
+                <div class="mini-cell mc-orange">${pz}</div>
+            `;
+
+            // C. Final Homogeneous (4x4)
+            document.getElementById('sideFinal').innerHTML = `
+                <div class="mini-cell mc-blue">${f(r11)}</div> <div class="mini-cell mc-blue">${f(r12)}</div> <div class="mini-cell mc-blue">${f(r13)}</div> <div class="mini-cell mc-orange">${px}</div>
+                <div class="mini-cell mc-blue">${f(r21)}</div> <div class="mini-cell mc-blue">${f(r22)}</div> <div class="mini-cell mc-blue">${f(r23)}</div> <div class="mini-cell mc-orange">${py}</div>
+                <div class="mini-cell mc-blue">${f(r31)}</div> <div class="mini-cell mc-blue">${f(r32)}</div> <div class="mini-cell mc-blue">${f(r33)}</div> <div class="mini-cell mc-orange">${pz}</div>
+                <div class="mini-cell mc-grey">0</div> <div class="mini-cell mc-grey">0</div> <div class="mini-cell mc-grey">0</div> <div class="mini-cell" style="font-weight:bold;">1</div>
+            `;
         }
 
         // Reset transformation
