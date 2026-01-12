@@ -41,7 +41,7 @@ CSC4702-Project/
 ├── index.html              # Home page with project overview
 ├── videos.html             # Three-tier video gallery
 ├── interactive.html        # Interactive learning portal
-├── reflection.html         # Project reflection & acknowledgments
+├── reflection.html         # Project reflection
 │
 ├── style.css               # Enhanced modern styling with animations
 ├── script.js               # Interactive features & animations
